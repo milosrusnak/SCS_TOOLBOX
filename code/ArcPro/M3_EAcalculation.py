@@ -404,11 +404,10 @@ for i in range(len(UNI_polygon)):
    arcpy.management.AddField(inter_out, "T_{}".format(year_sort[i]), "TEXT")
    with arcpy.da.UpdateCursor(inter_out, ("y_{}".format(year_sort[i]), "T_{}".format(year_sort[i]))) as cursor:
       for row in cursor:
-         if row[0] > 0:
+         if row[0] == year_sort[i]:
             row[1] = "channel"
          else:
             row[1] = "island" 
-         row[0] = year_sort[i]
          cursor.updateRow(row)
    EA_island.append(inter_out) 
    i = i+1

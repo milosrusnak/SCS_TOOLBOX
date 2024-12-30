@@ -204,10 +204,11 @@ if k == 1 :
     unionFAMseg = arcpy.Intersect_analysis ([union2, segments], "unionFAMseg", "ALL")
 
     unionFAMsegSingle = arcpy.management.MultipartToSinglepart(unionFAMseg, "%ScratchWorkspace%\\unionFAMsegSingle")
-    arcpy.DeleteField_management(unionFAMsegSingle, "ORIG_FID")
-
+    
     # HACH creation
-    hachTab = arcpy.sa.ZonalStatisticsAsTable(unionFAMsegSingle, "FID", detrended, "hachTab","DATA", "ALL")
+    Desc      = arcpy.Describe(unionFAMsegSingle)
+    OID_Field = Desc.OIDFieldName      
+    hachTab = arcpy.sa.ZonalStatisticsAsTable(unionFAMsegSingle, OID_Field, detrended, "hachTab","DATA", "ALL")
 
     fldlst = ["MIN", "MAX", "RANGE", "MEAN", "STD", "SUM"]
     fieldList = [field.name for field in arcpy.ListFields(hachTab) if field.name in fldlst]
@@ -223,7 +224,7 @@ if k == 1 :
         fldlstE.append("e_" + field)
 
     # VEG creation   
-    vegTab = arcpy.sa.ZonalStatisticsAsTable(unionFAMsegSingle, "FID", chm_clear, "vegTab","DATA", "ALL")
+    vegTab = arcpy.sa.ZonalStatisticsAsTable(unionFAMsegSingle, OID_Field, chm_clear, "vegTab","DATA", "ALL")
 
     fldlst = ["MIN", "MAX", "RANGE", "MEAN", "STD", "SUM"]
     fieldList = [field.name for field in arcpy.ListFields(vegTab) if field.name in fldlst]
