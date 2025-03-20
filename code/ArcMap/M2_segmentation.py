@@ -17,9 +17,14 @@ Last update on 27 NOVEMBER 2024
 @note: Standalone channel shifting toolbox (SCS Toolbox) was developed as extension of the FluvialCorridor toolbox with implemented the centerline 
        extraction approach and segmentation of DGO from FluvialCorridor toolbox.
        For each use of the Channel toolbox leading to a publication, report, presentation or any other
-       document, please refer also to the following article :
-       Roux, C., Alber, A., Bertrand, M., Vaudor, L., Piegay, H., submitted. "FluvialCorridor": A new ArcGIS 
-       package for multiscale riverscape exploration. Geomorphology
+       document, please refer also to the following articles:
+       Rusnák, M., Opravil, Š., Dunesme, S., Afzali, H., Rey, L., Parmentier, H., Piégay, H., 2025 A channel shifting GIS toolbox for exploring
+       floodplain dynamics through channel erosion and deposition. Geomorphology, 477, 109688. 
+       https://doi.org/10.1016/j.geomorph.2025.109688 
+
+       Roux, C., Alber, A., Bertrand, M., Vaudor, L., Piegay, H., 2015. "FluvialCorridor": A new ArcGIS 
+       package for multiscale riverscape exploration. Geomorphology, 242, 29-37.
+       https://doi.org/10.1016/j.geomorph.2014.04.018
        
 @summary: Modul2_segmentation is an open-source python and arcPy code.
           Generate channel segments from polygon. Modul using segmentation centerline from Modul1. 
