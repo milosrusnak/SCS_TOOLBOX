@@ -207,7 +207,7 @@ if k == 1 :
     arcpy.AddMessage("STEP 5 Create floodplain zone statistic with channel segments")
     unionFAMseg = arcpy.Intersect_analysis ([union2, segments], "unionFAMseg", "ALL")
 
-    unionFAMsegSingle = arcpy.management.MultipartToSinglepart(unionFAMseg, "%ScratchWorkspace%\\unionFAMsegSingle")
+    unionFAMsegSingle = arcpy.management.MultipartToSinglepart(unionFAMseg, "unionFAMsegSingle")
     arcpy.DeleteField_management(unionFAMsegSingle, "ORIG_FID")
 
     # HACH creation
@@ -243,8 +243,8 @@ if k == 1 :
         fldlstV.append("v_" + field)
 
     #DATA UNION
-    arcpy.management.JoinField(unionFAMsegSingle, "OBJECTID", hachTab, "OBJECTID",fldlstE)
-    arcpy.management.JoinField(unionFAMsegSingle, "OBJECTID", vegTab, "OBJECTID",fldlstV)
+    arcpy.management.JoinField(unionFAMsegSingle, "FID", hachTab, "FID",fldlstE)
+    arcpy.management.JoinField(unionFAMsegSingle, "FID", vegTab, "FID",fldlstV)
     name2 = "M4stattistics_all.shp"
     arcpy.management.CopyFeatures (unionFAMsegSingle,name2)
     arcpy.management.DefineProjection(name2, SR)
@@ -361,7 +361,7 @@ if k == 2 :
         fldlstE.append("e_" + field)
 
     #DATA UNION
-    arcpy.management.JoinField(unionFAMsegSingle, "OBJECTID", hachTab, "OBJECTID",fldlstE)
+    arcpy.management.JoinField(unionFAMsegSingle, "FID", hachTab, "FID",fldlstE)
     name2 = "M4stattistics_hach.shp"
     arcpy.management.CopyFeatures (unionFAMsegSingle,name2)
     arcpy.management.DefineProjection(name2, SR)
